@@ -1,14 +1,17 @@
 package com.mercadolibre.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +22,8 @@ public class Invoice {
 	private Date creationDate;
 	private Date expirationDate;
 	private PeriodEnum period;
+	private List<Charge> charges;
+	
 	
 	@Id
 	@Column(name = "INVOICE_ID")
@@ -58,5 +63,13 @@ public class Invoice {
 	public void setPeriod(PeriodEnum period) {
 		this.period = period;
 	}
+	
+	@OneToMany(fetch = FetchType.LAZY)
+	public List<Charge> getCharges() {
+		return charges;
+	}
 
+	public void setCharges(List<Charge> charges) {
+		this.charges = charges;
+	}
 }

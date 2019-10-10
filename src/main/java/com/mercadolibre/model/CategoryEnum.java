@@ -1,6 +1,6 @@
 package com.mercadolibre.model;
 
-public enum CategoryEnumç {
+public enum CategoryEnum {
 	CLASIFICADO,
 	VENTA,
 	ENVIO,
